@@ -14,7 +14,6 @@ Here are a few projects or blogs this project refered to:
 import diff from 'linear-list-diff';
 
 
-
 const source = [{key: 'a'}, {key: 'b'}, {key: 'f'}, {key: 'c'}, {key: 'e'}];
 const target = [{key: 'a'}, {key: 'e'}, {key: 'c'}, {key: 'f'}];
 
@@ -48,3 +47,21 @@ function patch(list, moves) {
 }
 
 ```
+
+## Usage
+To run test:
+
+```bash
+npm run build && npm run test
+```
+
+To run in browser, just include `dist/list-diff.js`:
+
+```html
+<script src="path/to/dist/list-diff.js"></script>
+<script>
+    var moves = diff([{id: 1}, {id: 2}], [{id: 1}], 'id');
+</script>
+```
+
+To run in Node, simply `require('linear-list-diff')`
