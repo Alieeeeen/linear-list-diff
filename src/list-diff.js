@@ -48,14 +48,13 @@ function diff(oldList, newList, key) {
     }
   });
 
-  // positions of elements to be removed should take all deltas.
-  let indexDelta = indexDeltas.reduce((prev, delta) => prev + delta);
+  // remove extra.
   oldListKeys.forEach((key, i) => {
     
     if (newListKeys.indexOf(key) === -1)
       moves.push({
         type: 'REMOVE',
-        index: i + indexDelta
+        index: newListLength  // all extra items must've been moved to end.
       });
   });
 
@@ -72,4 +71,3 @@ function getKeys(list, key) {
     } else  return void 0;
   });
 }
-
