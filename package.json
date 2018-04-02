@@ -1,0 +1,30 @@
+{
+  "name": "list-diff",
+  "version": "0.0.0",
+  "description": "A comprehensive linear-complexity list diff for diffing 2 lists.",
+  "main": "dist/list-diff.js",
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "test": "mocha test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Alieeeeen/linear-list-diff.git"
+  },
+  "keywords": [
+    "diffing",
+    "vdom",
+    "list-diff"
+  ],
+  "author": "alien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alieeeeen/linear-list-diff/issues"
+  },
+  "homepage": "https://github.com/Alieeeeen/linear-list-diff#readme",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^5.0.5",
+    "rollup": "^0.57.1"
+  }
+}
