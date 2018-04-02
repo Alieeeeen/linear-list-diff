@@ -1,5 +1,5 @@
 {
-  "name": "list-diff",
+  "name": "linear-list-diff",
   "version": "0.0.0",
   "description": "A comprehensive linear-complexity list diff for diffing 2 lists.",
   "main": "dist/list-diff.js",

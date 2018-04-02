@@ -28,6 +28,7 @@ function run(source, target) {
   const res = patch(source, patches);
 
   expect(res).to.eql(target);
+  return patches;
 }
 
 describe('list-diff', () => {
@@ -66,7 +67,7 @@ describe('list-diff', () => {
       const source = [{key: 'a'}, {key: 'b'}, {key: 'f'}, {key: 'c'}, {key: 'e'}];
       const target = [{key: 'a'}, {key: 'e'}, {key: 'c'}, {key: 'f'}];
 
-      run(source, target);
+      console.log(run(source, target));
     });
 
     it('complex2', () => {
