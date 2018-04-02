@@ -26,13 +26,11 @@ function diff(oldList, newList, key) {
       // positions of all unprocessed elements should take this delta.
       indexDeltas[oldListLength - 1]++;
     } else {
-      let oldIndex = _physicalIndex + indexDeltas.reduce((prev, delta, i) => {
-        if (i >= _physicalIndex) {
-          return prev + delta;
-        } else {
-          return prev;
-        }
-      });
+      let oldIndex = _physicalIndex;
+
+      for (let i = oldListLength - 1; i >= _physicalIndex; i--) {
+        oldIndex += indexDeltas[i];
+      }
 
       // If it is already in place, don't do anything.
       if (newIndex === oldIndex)  return;
