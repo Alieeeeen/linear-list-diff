@@ -1,4 +1,4 @@
-# List Diff Algorithm
+# linear-list-diff
 
 A linear-complexity list diff for diffing 2 lists. It is simple & comprehensive, and takes only 80 lines. 
 
