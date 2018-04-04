@@ -2,11 +2,20 @@
 
 A linear-complexity list diff for diffing 2 lists. It is simple & comprehensive, and takes only 80 lines. 
 
-Here are a few projects or blogs this project refered to:
+This algorithm is used for diffing 2 lists of children of 2 vtree, thus if neither of the 2 lists contain any children, the result will be empty. For more details, please visit my another virtual dom project [amber-dom](https://github.com/Alieeeeen/amber-dom).
+
+Here are a few projects or blogs this algorithm refered to:
 
 - [ayqy/React list diff](http://www.ayqy.net/blog/react-list-diff/)
 - [livoras/list-diff](https://github.com/livoras/list-diff)
 - [Matt-Esch/virtual-dom](https://github.com/Matt-Esch/virtual-dom)
+
+## Paramters
+**diff(source, target, key)**
+
+- **source {Array}**: an array of object with some key.
+- **targte {Array}**: an array of updated object with some key.
+- **key {String|Function}**: the identifier of an object. If it is a function, each object is passed to it and it must return a string.
 
 ## Example
 
@@ -17,10 +26,14 @@ import diff from 'linear-list-diff';
 const source = [{key: 'a'}, {key: 'b'}, {key: 'f'}, {key: 'c'}, {key: 'e'}];
 const target = [{key: 'a'}, {key: 'e'}, {key: 'c'}, {key: 'f'}];
 
-const moves = diff(source, target); // => [ { type: 'MOVE', from: 4, to: 1 },
+// Normal case.
+const moves = diff(source, target, 'key'); // => [ { type: 'MOVE', from: 4, to: 1 },
                                     //      { type: 'MOVE', from: 4, to: 2 },
                                     //      { type: 'MOVE', from: 4, to: 3 },
                                     //      { type: 'REMOVE', index: 4 } ]
+
+// Provide another key that neither array has one.
+const moves2 = diff(source, target, 'id');  // => []
 
 const res = patch(source, moves);   // => [{key: 'a'}, {key: 'e'}, {key: 'c'}, {key: 'f'}]
 
@@ -49,7 +62,7 @@ function patch(list, moves) {
 ```
 
 ## Usage
-To run test:
+To run test in Node.js:
 
 ```bash
 npm run build && npm run test
