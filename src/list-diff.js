@@ -7,6 +7,9 @@ function diff(oldList, newList, key) {
   const newListLength = newList.length;
   const moves = [];
 
+  // Not a key was provied, don't diff.
+  if (noKeys(oldListKeys) && noKeys(newListKeys))
+    return moves;
   // record the move of the last element.
   let indexDeltas = new Array(oldListLength).fill(0);
   let _physicalIndex;
@@ -68,4 +71,13 @@ function getKeys(list, key) {
         : item[key];
     } else  return void 0;
   });
+}
+
+
+function noKeys(list) {
+  for (const item of list)
+    if (item !== void 0)
+      return false;
+
+  return true;
 }

@@ -33,6 +33,14 @@ function run(source, target) {
 
 describe('list-diff', () => {
   describe('simple case', () => {
+    it('2 lists contain no key should not be diffed', () => {
+      const source = [{id: 12}, {id: 90}];
+      const target = [{id: 13}, {id: 80}];
+
+      const patches = diff(source, target, 'key');
+      expect(patches).to.eql([]);
+    })
+
     it('test remove', () => {
       const source = [{key: 1}, {key: 2}, {key: 3}];
       const target = [{key: 1}];
@@ -67,7 +75,7 @@ describe('list-diff', () => {
       const source = [{key: 'a'}, {key: 'b'}, {key: 'f'}, {key: 'c'}, {key: 'e'}];
       const target = [{key: 'a'}, {key: 'e'}, {key: 'c'}, {key: 'f'}];
 
-      console.log(run(source, target));
+      run(source, target);
     });
 
     it('complex2', () => {
