@@ -71,13 +71,25 @@ npm i linear-list-diff
 git clone https://github.com/Alieeeeen/linear-list-diff.git
 ```
 
-To run test in Node.js:
+- To run test in Node.js:
 
 ```bash
 npm run build && npm run test
 ```
 
-To run in browser, just include `dist/list-diff.js`:
+- To use ES module:
+
+```js
+import diff from 'linear-list-diff';
+```
+
+- To use CommonJS:
+
+```js
+const diff = require('linear-list-diff/dist');
+```
+
+- To run in browser, just include `dist/list-diff.js`:
 
 ```html
 <script src="path/to/dist/list-diff.js"></script>

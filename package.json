@@ -1,6 +1,6 @@
 {
   "name": "linear-list-diff",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A comprehensive linear-complexity list diff for diffing 2 lists.",
   "main": "index.js",
   "scripts": {
