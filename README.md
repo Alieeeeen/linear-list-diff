@@ -16,52 +16,61 @@ Here are a few projects or blogs this algorithm refered to:
 - **source {Array}**: an array of object with some key.
 - **targte {Array}**: an array of updated object with some key.
 - **key {String|Function}**: the identifier of an object. If it is a function, each object is passed to it and it must return a string.
+- **return {Object}**: an object containing `moves` & a simulation object `diffed`.
 
 ## Example
+Consider a group of prisoners just got escaped from jail, and they changed their names.
+It doesn't matter, though, because we have clues. Assume we can find them by their `key`s.
+
+after being diffed, the prisoners will be found in `.diffed`, and `.moves` tells us how to find them from the group of people step by step
+
+- remove(free those innocent),
+- insert(find this prisoner somewhere else),
+- or move(adjust their positions)).
 
 ```js
 import diff from 'linear-list-diff';
 
 
-const source = [{key: 'a'}, {key: 'b'}, {key: 'f'}, {key: 'c'}, {key: 'e'}];
-const target = [{key: 'a'}, {key: 'e'}, {key: 'c'}, {key: 'f'}];
+const people = [{key: 'a', name: 'Mary'},
+                {key: 'b', name: 'John'},
+                {key: 'f', name: 'Kelly'},
+                {key: 'c', name: 'Jim'},
+                {key: 'e', name: 'Alien'}];
+
+const prisoners = [{key: 'a', name: 'Stan'},
+                {key: 'e', name: 'Nicholas'},
+                {key: 'c', name: 'Sasha'},
+                {key: 'f', name: 'Another one'}];
 
 // Normal case.
-const moves = diff(source, target, 'key'); // => [ { type: 'MOVE', from: 4, to: 1 },
-                                    //      { type: 'MOVE', from: 4, to: 2 },
-                                    //      { type: 'MOVE', from: 4, to: 3 },
-                                    //      { type: 'REMOVE', index: 4 } ]
+const diffs = diff(prisoners, people, 'key'); 
+console.log(diffs.moves)   //=> [ { type: 'INSERT', index: 1, item: { key: 'b', name: 'John' } },
+                           // { type: 'MOVE', from: 4, to: 2 },
+                           // { type: 'MOVE', from: 4, to: 3 } ]
 
-// Provide another key that neither array has one.
-const moves2 = diff(source, target, 'id');  // => []
-
-const res = patch(source, moves);   // => [{key: 'a'}, {key: 'e'}, {key: 'c'}, {key: 'f'}]
-
-function patch(list, moves) {
-  var _item;
-  moves.forEach((move) => {
-    switch(move.type) {
-    case 'INSERT':
-      list.splice(move.index, 0, move.item);
-      break;
-    case 'REMOVE':
-      list.splice(move.index, 1);
-      break;
-    case 'MOVE':
-
-      _item = list.splice(move.from, 1)[0];
-      list.splice(move.to, 0, _item);
-      break;
-    default:
-      break;
-    }
-  });
-  return list;
-}
-
+console.log(diffs.diffed)  //=> [ { key: 'a', name: 'Stan' },
+                           // { key: 'b', name: 'John' },
+                           // { key: 'f', name: 'Another one' },
+                           // { key: 'c', name: 'Sasha' },
+                           // { key: 'e', name: 'Nicholas' } ]
+```
+But if we have no clues on them, we can't find them:
+```js
+const diffs = diff(prisoners, people, 'no clues'); // => { moves: [], diffed: prisoners }
 ```
 
 ## Usage
+First install it via npm or download it directly:
+
+```bash
+npm i linear-list-diff
+
+## or
+
+git clone https://github.com/Alieeeeen/linear-list-diff.git
+```
+
 To run test in Node.js:
 
 ```bash
