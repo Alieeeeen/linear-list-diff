@@ -2,7 +2,7 @@
   "name": "linear-list-diff",
   "version": "1.0.1",
   "description": "A comprehensive linear-complexity list diff for diffing 2 lists.",
-  "main": "dist/list-diff.js",
+  "main": "index.js",
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "test": "mocha test/"
@@ -16,7 +16,7 @@
     "vdom",
     "list-diff"
   ],
-  "author": "alien",
+  "author": "alieeeeen",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Alieeeeen/linear-list-diff/issues"

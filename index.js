@@ -1,1 +1,2 @@
-module.exports = require('./dist/list-diff');
+import diff from './src/list-diff';
+export default diff;
