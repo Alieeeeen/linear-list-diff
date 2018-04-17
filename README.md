@@ -1,6 +1,8 @@
 # linear-list-diff
 
-A linear-complexity list diff for diffing 2 lists. It is simple & comprehensive, and takes only 80 lines. 
+**Deprecated**. This algorithm was originally used in [amber-dom](https://github.com/Alieeeeen/amber-dom). amber-dom is now under construction, with a different algorithm. This diff might be comprehensible, but rather inefficient.
+
+A linear-complexity list diff for diffing 2 lists. It is simple & comprehensible, and takes only 80 lines.
 
 This algorithm is used for diffing 2 lists of children of 2 vtree, thus if neither of the 2 lists contain any children, the result will be empty. For more details, please visit my another virtual dom project [amber-dom](https://github.com/Alieeeeen/amber-dom).
 
@@ -44,7 +46,7 @@ const prisoners = [{key: 'a', name: 'Stan'},
                 {key: 'f', name: 'Another one'}];
 
 // Normal case.
-const diffs = diff(prisoners, people, 'key'); 
+const diffs = diff(prisoners, people, 'key');
 console.log(diffs.moves)   //=> [ { type: 'INSERT', index: 1, item: { key: 'b', name: 'John' } },
                            // { type: 'MOVE', from: 4, to: 2 },
                            // { type: 'MOVE', from: 4, to: 3 } ]
